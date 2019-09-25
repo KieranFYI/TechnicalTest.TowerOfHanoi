@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Tower Of Hanoi</title>
+        <style type="text/css">
+            #gameContainer {
+                background-color: #FFFFFF;
+                width: 100%;
+                height: 400px;
+                display: none;
+            }
+
+            #mainContent.fullscreen #gameContainer {
+                height: 100%;
+            }
+
+            #menu {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                max-width: 400px;
+                margin: 0 auto;
+                font-size: 16px;
+                text-align: center;
+                background-color: #585858;
+                color: #FFFFFF;
+                padding: 10px;
+            }
+
+            #menu h2 {
+                font-size: 40px;
+                margin: 0px;
+            }
+
+            #menu .instructions {
+                padding: 20px;
+            }
+
+            #menu .input {
+                margin: 10px;
+                font-size: 14px;
+            }
+
+            #menu .input input {
+                width: 50px;
+            }
+
+            #menu #start {
+                text-decoration: none;
+                font-size: 30px;
+                color: #FFFFFF;
+                display: block;
+                border: 2px solid;
+            }    
+        </style>
+    </head>
+    <body>
+                
+        <div id="menu">
+            <h2>How to Play</h2>
+            <p class="instructions">
+                Click on the tower you want to move the block from so it becomes <span style="color: #00FF00;">green</span>.
+
+                <br /><br />
+
+                Once you have selected the first tower,
+                Click on the next tower to move the block.
+                
+                <br /><br />
+
+                Blocks can only be placed on bigger blocks.
+                
+            </p>
+            <label class="input">
+                Number of Blocks: <br />
+                <input type="number" id="numberOfBlocks" value="7" />
+            </label>
+
+            <label class="input">
+                Number of Towers: <br />
+                <input type="number" id="numberOfTowers" value="3" />
+            </label>
+            <a href="#" id="start">Click to start</a>
+        </div>
+        <div id="gameContainer">
+        </div>
+
+        <script type="text/javascript" src="./TowerOfHanoi.js"></script>
+        <script ype="text/javascript">
+            
+            window.addEventListener("load", function(event) {
+                document.getElementById("start").addEventListener("click", function(event) {
+                    event.preventDefault();
+
+                    var blocks = document.getElementById("numberOfBlocks").value;
+                    var towers = document.getElementById("numberOfTowers").value;
+                    document.getElementById("menu").style.display = 'none';
+                    document.getElementById("gameContainer").style.display = 'block';
+                    new TowerOfHanoi(document.getElementById("gameContainer"), towers, blocks);
+                });
+            });
+        </script>
+    </body>
+</html>
